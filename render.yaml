@@ -4,10 +4,6 @@ databases:
     user: blog
     plan: free
 
-  - name: blog-staging
-    databaseName: blog_staging
-    user: blog
-    plan: free
 
 services:
   - type: web
@@ -23,21 +19,5 @@ services:
         sync: false
       - key: RAILS_ENV
         value: production
-      - key: WEB_CONCURRENCY
-        value: 2 # sensible default
-
-  - type: web
-    name: blog-staging
-    runtime: docker
-    plan: free
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: blog-staging
-          property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
-      - key: RAILS_ENV
-        value: staging
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
