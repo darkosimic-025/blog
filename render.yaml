@@ -1,5 +1,5 @@
 databases:
-  - name: blog-production
+  - name: blog
     databaseName: blog_production
     user: blog
     plan: free
@@ -7,13 +7,13 @@ databases:
 
 services:
   - type: web
-    name: blog-production
+    name: blog
     runtime: docker
     plan: free
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: blog-production
+          name: blog
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
