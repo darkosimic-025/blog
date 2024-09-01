@@ -57,3 +57,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise-tailwindcssed", "~> 0.1.6"
+
+gem "devise", "~> 4.9"
