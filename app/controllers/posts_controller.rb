@@ -12,7 +12,6 @@ class PostsController < ApplicationController
                .per(10)
   end
 
-
   def show
   end
 
@@ -54,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 
   def sort_params(params)
