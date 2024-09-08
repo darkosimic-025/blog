@@ -2,7 +2,9 @@
   <%= render 'sort' %>
 </div>
 
-<%= render partial: 'posts/posts_list', locals: { posts: @posts } %>
+<div class="w-full max-w-7xl mx-auto p-4">
+  <%= render partial: 'posts/posts_list', locals: { posts: @posts } %>
+</div>
 
 <div class="flex justify-center mt-6">
   <%= paginate @posts %>

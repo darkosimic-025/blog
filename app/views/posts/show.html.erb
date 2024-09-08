@@ -1,34 +1,39 @@
-<main class="max-w-4xl mx-auto p-6">
-  <header class="mb-6">
+<main class="max-w-4xl w-full mx-auto p-6 mt-8">
+  <header class="mb-6 w-full">
     <h1 class="text-4xl font-bold text-gray-900 mb-4"><%= @post.title %></h1>
 
-    <!-- Dodaj tekst posta ovde -->
-    <div class="mb-6 text-gray-900">
-      <%= simple_format(@post.body) %> <!-- simple_format čuva osnovnu formatiranost (npr. nove redove) -->
+    <!-- Tekst posta -->
+    <div class="prose prose-lg max-w-none text-gray-900 mb-6 w-full">
+      <%= simple_format(@post.body) %>
     </div>
 
-    <div class="flex items-center space-x-4 text-gray-600">
+    <!-- Meta informacije o postu -->
+    <div class="flex items-center justify-between space-x-4 text-gray-600 w-full">
       <p class="text-sm">
         Published on <time datetime="<%= @post.created_at.strftime('%Y-%m-%d') %>"><%= @post.created_at.strftime("%B %d, %Y") %></time>
       </p>
-      <p class="text-sm">•</p>
-      <div id="likes_count">
-        <%= render 'posts/likes_count', post: @post %>
-      </div>
-      <p class="text-sm">•</p>
-
-      <div id="comments_count_frame">
-        <%= render 'posts/comments_count', post: @post %>
+      <div class="flex items-center space-x-4">
+        <div id="likes_count">
+          <%= render 'posts/likes_count', post: @post %>
+        </div>
+        <p class="text-sm">•</p>
+        <div id="comments_count_frame">
+          <%= render 'posts/comments_count', post: @post %>
+        </div>
       </div>
     </div>
-    <div class="mt-4">
+
+    <!-- Dugme za like/unlike -->
+    <div class="mt-4 w-full">
       <%= render 'posts/like_button', post: @post %>
     </div>
   </header>
 
+  <!-- Forma za komentare -->
   <%= render 'comments/form', post: @post %>
 
-  <div id="comments">
+  <!-- Prikaz komentara -->
+  <div id="comments" class="mt-8 prose max-w-none w-full">
     <%= render @post.comments %>
   </div>
 </main>

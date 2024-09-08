@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    params[:q] ||= { s: 'created_at desc' }
+
     @q = Post.ransack(params[:q])
 
     @posts = @q.result
@@ -9,6 +11,7 @@ class PostsController < ApplicationController
                .page(params[:page])
                .per(10)
   end
+
 
   def show
   end
