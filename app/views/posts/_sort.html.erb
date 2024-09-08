@@ -1,0 +1,9 @@
+<div class="flex items-center justify-end mb-4 space-x-2">
+  <%= sort_link(@q, :title, "Sort by Title", default_order: :asc, class: "px-4 py-2 rounded-md  #{'bg-blue-500 text-white' if @q.sorts[0]&.name == 'title'}") %>
+
+  <%= sort_link(@q, :likes_count, "Sort by Likes", default_order: :asc, class: "px-4 py-2 rounded-md  #{'bg-blue-500 text-white' if @q.sorts[0]&.name == 'likes_count'}") %>
+
+  <%= sort_link(@q, :comments_count, "Sort by Comments", default_order: :asc, class: "px-4 py-2 rounded-md  #{'bg-blue-500 text-white' if @q.sorts[0]&.name == 'comments_count'}") %>
+
+  <%= sort_link(@q, :created_at, "Sort by Date", default_order: :asc, class: "px-4 py-2 rounded-md  #{'bg-blue-500 text-white' if @q.sorts[0]&.name == 'created_at'}") %>
+</div>

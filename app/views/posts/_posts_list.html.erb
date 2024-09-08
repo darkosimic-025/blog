@@ -1,0 +1,14 @@
+<div class="flex-1 overflow-auto p-6">
+  <ul class="space-y-4">
+    <% posts.each do |post| %>
+      <li class="p-4 border border-gray-300 rounded-lg shadow-md hover:bg-gray-100 transition">
+        <%= link_to post, class: "block h-full w-full" do %>
+          <h2 class="text-lg font-bold mb-2"><%= post.title %></h2>
+          <p><%= truncate(post.body, length: 100) %></p>
+          <p class="text-sm text-gray-600 mt-2">Created at: <%= post.created_at.strftime("%B %d, %Y") %></p>
+          <p class="text-sm text-gray-600">Likes: <%= post.likes_count %>, Comments: <%= post.comments_count %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
