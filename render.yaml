@@ -4,6 +4,7 @@ databases:
     user: blog
     plan: free
 
+
 services:
   - type: web
     name: blog
@@ -20,7 +21,3 @@ services:
         value: production
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
-    buildCommand: bundle install && bundle exec rake db:migrate
-    startCommand: |
-      bundle exec rake db:seed
-      bundle exec puma -C config/puma.rb

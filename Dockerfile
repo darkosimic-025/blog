@@ -59,9 +59,14 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
+
+# Kopiraj docker-entrypoint.sh i omogući izvršavanje
+COPY docker-entrypoint.sh /rails/bin/docker-entrypoint
+RUN chmod +x /rails/bin/docker-entrypoint
+
 USER 1000:1000
 
-# Entrypoint prepares the database.
+# Entrypoint priprema bazu podataka pre pokretanja servera
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
