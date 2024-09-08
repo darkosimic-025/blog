@@ -1,0 +1,6 @@
+<div class="flex items-center justify-end mb-4 space-x-2">
+  <%= sort_link(@q, :title, "Sort by Title", default_order: :asc, class: "px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 hover:text-gray-900") %>
+  <%= sort_link(@q, :likes_count, "Sort by Likes", default_order: :asc, class: "px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 hover:text-gray-900") %>
+  <%= sort_link(@q, :comments_count, "Sort by Comments", default_order: :asc, class: "px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 hover:text-gray-900") %>
+  <%= sort_link(@q, :created_at, "Sort by Date", default_order: :asc, class: "px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 hover:text-gray-900") %>
+</div>

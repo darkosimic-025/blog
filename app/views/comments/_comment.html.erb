@@ -1,0 +1,15 @@
+<div id="comment_<%= comment.id %>" class="p-4 border-b border-gray-200">
+  <div class="flex justify-between items-center">
+    <p class="text-sm font-medium text-gray-800"><%= comment.user.email %> said:</p>
+    <p class="text-sm text-gray-500">
+      <time datetime="<%= comment.created_at.strftime('%Y-%m-%dT%H:%M:%S') %>">
+        <%= time_ago_in_words(comment.created_at) %> ago
+      </time>
+    </p>
+  </div>
+  <p class="mt-2 text-gray-900"><%= comment.body %></p>
+
+  <% if comment.user == current_user %>
+    <%= button_to "Delete", post_comment_path(@post, comment), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "text-red-600 hover:text-red-800 text-sm" %>
+  <% end %>
+</div>

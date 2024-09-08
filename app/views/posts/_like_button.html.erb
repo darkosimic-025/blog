@@ -1,0 +1,5 @@
+<% if current_user && post.likes.exists?(user: current_user) %>
+  <%= link_to "Unlike", post_like_path(post, post.likes.find_by(user: current_user)), method: :delete, class: "px-4 py-2 bg-red-600 text-white rounded-md", data: { turbo_confirm: "Are you sure?", turbo_method: :delete }, id: "like_button" %>
+<% else %>
+  <%= button_to "Like", post_likes_path(post), method: :post, class: "px-4 py-2 bg-blue-600 text-white rounded-md", id: "like_button" %>
+<% end %>

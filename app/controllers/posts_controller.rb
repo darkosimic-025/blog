@@ -10,27 +10,6 @@ class PostsController < ApplicationController
                .per(10)
   end
 
-  private
-
-  def sort_params(params)
-    case params[:sort]
-    when 'likes_asc'
-      'likes_count ASC'
-    when 'likes_desc'
-      'likes_count DESC'
-    when 'comments_asc'
-      'comments_count ASC'
-    when 'comments_desc'
-      'comments_count DESC'
-    when 'date_asc'
-      'created_at ASC'
-    when 'date_desc'
-      'created_at DESC'
-    else
-      'created_at DESC'
-    end
-  end
-
   def show
   end
 
@@ -49,6 +28,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # The @post variable is set by the set_post callback
   end
 
   def update
@@ -72,5 +52,24 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def sort_params(params)
+    case params[:sort]
+    when 'likes_asc'
+      'likes_count ASC'
+    when 'likes_desc'
+      'likes_count DESC'
+    when 'comments_asc'
+      'comments_count ASC'
+    when 'comments_desc'
+      'comments_count DESC'
+    when 'date_asc'
+      'created_at ASC'
+    when 'date_desc'
+      'created_at DESC'
+    else
+      'created_at DESC'
+    end
   end
 end
