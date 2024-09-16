@@ -22,7 +22,6 @@ class LikesController < ApplicationController
 
     if @like
       @like.destroy
-      @post.reload
       respond_to do |format|
         format.html { redirect_to @post }
         format.turbo_stream do

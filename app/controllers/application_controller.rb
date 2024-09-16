@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Override authenticate_user! to disable the flash message
   def authenticate_user!
     unless user_signed_in?
       redirect_to new_user_session_path

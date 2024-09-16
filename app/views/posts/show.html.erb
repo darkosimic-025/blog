@@ -2,19 +2,15 @@
   <header class="mb-6 w-full">
     <h1 class="text-4xl font-bold text-gray-900 mb-4"><%= @post.title %></h1>
 
-    <!-- Prikaz slike posta -->
     <% if @post.image.attached? %>
-      <div class="mb-6">
-        <%= image_tag @post.image, class: "w-full h-auto rounded-md" %>
-      </div>
+      <%= image_tag url_for(@post.image), class: "w-full h-auto" %>
     <% end %>
 
-    <!-- Tekst posta -->
+
     <div class="prose prose-lg max-w-none text-gray-900 mb-6 w-full">
       <%= simple_format(@post.body) %>
     </div>
 
-    <!-- Meta informacije o postu -->
     <div class="flex items-center justify-between space-x-4 text-gray-600 w-full">
       <p class="text-sm">
         Published on <time datetime="<%= @post.created_at.strftime('%Y-%m-%d') %>"><%= @post.created_at.strftime("%B %d, %Y") %></time>
@@ -24,22 +20,19 @@
           <%= render 'posts/likes_count', post: @post %>
         </div>
         <p class="text-sm">•</p>
-        <div id="comments_count_frame">
+        <div id="comments_count">
           <%= render 'posts/comments_count', post: @post %>
         </div>
       </div>
     </div>
 
-    <!-- Dugme za like/unlike -->
     <div class="mt-4 w-full">
       <%= render 'posts/like_button', post: @post %>
     </div>
   </header>
 
-  <!-- Forma za komentare -->
-  <%= render 'comments/form', post: @post %>
+  <%= render 'comments/form', post: @post, comment: Comment.new %>
 
-  <!-- Prikaz komentara -->
   <div id="comments" class="mt-8 prose max-w-none w-full">
     <%= render @post.comments %>
   </div>

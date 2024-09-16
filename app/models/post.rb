@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_one_attached :image
 
-  validates :title, presence: { message: "Title is required." }
-  validates :body, presence: { message: "Body is required." }
+  validates :title, presence: true
+  validates :body, presence: true
   def self.ransackable_attributes(auth_object = nil)
     ["body", "comments_count", "created_at", "id", "likes_count", "title", "updated_at", "user_id"]
   end
