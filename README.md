@@ -1,24 +1,20 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Blog
 
-Things you may want to cover:
+## Running in the development environment
 
-* Ruby version
+To start the application, run the following command:
 
-* System dependencies
+```bash
+docker-compose up --build
+```
 
-* Configuration
+**Note**: The application requires all tests to pass for a successful startup.
 
-* Database creation
+## Running tests separately
 
-* Database initialization
+To run the tests separately, use the following command:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker-compose run web bin/rails test
+```
